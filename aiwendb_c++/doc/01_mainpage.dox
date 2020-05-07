@@ -1,0 +1,50 @@
+// $Id: 01_mainpage.dox 2549 2018-06-08 18:48:31Z stephane $
+
+/**
+
+@mainpage GeoLite2++
+
+<!-- htmlinclude "donate.html" -->
+@author Stéphane Charette, stephanecharette@gmail.com
+@copyright (C) 2016-2018 Stéphane Charette
+@see &bull; <a href="http://www.ccoderun.ca/GeoLite2PP/api/">Official Documentation</a>
+@see &bull; <a target="_blank" href="http://www.ccoderun.ca/GeoLite2PP/download/?C=M;O=D">Download GeoLite2++</a>
+@see &bull; <a target="_blank" href="http://www.ccoderun.ca/GeoLite2PP/download/license.txt"><tt>license.txt</tt></a>
+@see &bull; @ref usage
+
+&nbsp;
+
+<hr>
+
+Example C++:
+
+~~~~{.cpp}
+#include <GeoLite2PP.hpp>
+
+// ...
+
+std::string database_filename = "/opt/my_project_files/GeoLite2-City.awdb";
+GeoLite2PP::DB db( database_filename );
+
+std::string json = db.lookup( "65.44.217.6" );
+
+std::cout << json << std::endl;
+~~~~
+
+Example output:
+
+~~~~{.json}
+{  "city"      : { "names" : { "en" : "Fresno" } },
+   "continent" : { "code" : "NA", "names" : { "en" : "North America" } },
+   "country"   : { "iso_code" : "US", "names" : { "en" : "United States" } },
+   "location"  : { "accuracy_radius" : 200,
+                   "latitude" : 36.6055,
+                   "longitude" : -119.752,
+                   "time_zone" : "America/Los_Angeles" },
+   "postal"    : { "code" : "93725" },
+   "subdivisions" : [ { "iso_code" : "CA", "names" : { "en" : "California" } } ]
+}
+~~~~
+
+*/
+

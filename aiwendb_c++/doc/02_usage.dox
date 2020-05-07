@@ -1,0 +1,61 @@
+// $Id: 02_usage.dox 1999 2016-10-17 16:49:34Z stephane $
+
+/**
+
+@page usage Usage
+
+
+@li Link your application against the libgeolite2++ library.  See @p /usr/lib/libgeolite2++.a or @p /usr/lib/libgeolite2++.so.
+
+@li Make C++ calls to GeoLite2++ from within your application.
+
+Query the GeoLite2 database and return a JSON string with the details for the given address:
+~~~~{.cpp}
+#include <GeoLite2PP.hpp>
+...
+GeoLite2PP::DB db( "/opt/stuff/GeoLite2-City.awdb" );
+std::string json_ = db.lookup( "216.58.216.163" );
+std::cout << json << std::endl;
+~~~~
+
+Query the GeoLite2 database and return very specific field values for the given address:
+~~~~{.cpp}
+#include <GeoLite2PP.hpp>
+...
+GeoLite2PP::DB db( "/opt/stuff/GeoLite2-City.awdb" );
+std::string city     = db.get_field( "216.58.216.163", GeoLite2PP::VCStr { "city"    , "names"  , "en" } );
+std::string country  = db.get_field( "216.58.216.163", GeoLite2PP::VCStr { "country" , "names"  , "en" } );
+std::string latitude = db.get_field( "216.58.216.163", GeoLite2PP::VCStr { "location", "latitude"      } );
+~~~~
+The fields in the vector (e.g., @p "city", @p "names", @p "en") are used to traverse the structures and return exact
+values.  This traversal path can be determined by comparing against the @p .json output from the previous call, part
+of which is:
+~~~~{.json}
+{
+    "city" : 
+    {
+        "names" : 
+        {
+            "de" : "Mountain View",
+            "en" : "Mountain View",
+            "fr" : "Mountain View",
+            "ja" : "マウンテンビュー",
+            "ru" : "Маунтин-Вью",
+            "zh-CN" : "芒廷维尤"
+        }
+    },
+~~~~
+Calling @p db.get_field() with a vector containing <tt>"city", "names", "en"</tt> would return the English name for
+the given city, or @p "Mountain View" in this example.
+
+For additional details and methods that can be called to query MaxMind's GeoLite2 IP address database, please refer to
+the documentation for @ref GeoLite2PP::DB.  For example:
+
+API										| Description
+----------------------------------------|------------
+@ref GeoLite2PP::DB						| Class to talk to the GeoLite2 database.
+@ref GeoLite2PP::DB::DB()				| Constructor to gain access to the database.
+@ref GeoLite2PP::DB::lookup()			| Look up an IP address and return all the information as a JSON string.
+@ref GeoLite2PP::DB::get_all_fields()	| Look up an IP address and return a std::map of many fields.
+
+*/

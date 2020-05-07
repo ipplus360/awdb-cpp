@@ -1,0 +1,14 @@
+# GeoLite2++ (C) 2016-2018 Stephane Charette <stephanecharette@gmail.com>
+# $Id: CM_version.cmake 2549 2018-06-08 18:48:31Z stephane $
+
+
+EXECUTE_PROCESS (
+	COMMAND svnversion
+	WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+	OUTPUT_VARIABLE GeoLite2PP_VER_SVN
+	OUTPUT_STRIP_TRAILING_WHITESPACE )
+SET ( GeoLite2PP_VER_MAJOR 0 )
+SET ( GeoLite2PP_VER_MINOR 0 )
+SET ( GeoLite2PP_VER_PATCH 1-${GeoLite2PP_VER_SVN} )
+SET ( GeoLite2PP_VERSION ${GeoLite2PP_VER_MAJOR}.${GeoLite2PP_VER_MINOR}.${GeoLite2PP_VER_PATCH} )
+MESSAGE ( "Building ver: ${GeoLite2PP_VERSION}" )
