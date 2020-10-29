@@ -58,29 +58,29 @@ int main( int argc, char *argv[] )
 	
 	 //地区可能有多个 这里取第一个省
 	
-	std::string     prov = db.get_field( "166.111.4.100","", GeoLite2PP::VCStr {"multiAreas","0","prov"} );	
+	std::string     prov = db.get_field( "166.111.4.100","", GeoLite2PP::VCStr {"province"} );	
 	
 	std::cout << "省:"<<prov << std::endl;
 	
 	//地区可能有多个 这里取第一个市
 	
-	std::string     city = db.get_field( "166.111.4.100","", GeoLite2PP::VCStr {"multiAreas","0","city"} );	
+	std::string     city = db.get_field( "166.111.4.100","", GeoLite2PP::VCStr {"city"} );	
 	
 	std::cout << "城市:"<<city<< std::endl;
 
-	std::string     district = db.get_field( "166.111.4.100","", GeoLite2PP::VCStr {"multiAreas","0","district"} );	
+	std::string     district = db.get_field( "166.111.4.100","", GeoLite2PP::VCStr {"district"} );	
 	
 	std::cout << "区县:"<<district<< std::endl;
 
-	std::string     lonwgs = db.get_field( "166.111.4.100","", GeoLite2PP::VCStr {"multiAreas","0","lonwgs"} );	
+	std::string     lonwgs = db.get_field( "166.111.4.100","", GeoLite2PP::VCStr {"lngwgs"} );	
 	
 	std::cout << "经度:"<<lonwgs << std::endl;
 	
-	std::string     latwgs = db.get_field( "166.111.4.100","", GeoLite2PP::VCStr {"multiAreas","0","latwgs"} );	
+	std::string     latwgs = db.get_field( "166.111.4.100","", GeoLite2PP::VCStr {"latwgs"} );	
 	
 	std::cout << "纬度:"<<latwgs << std::endl;
 
-	std::string     radius = db.get_field( "166.111.4.100","", GeoLite2PP::VCStr {"multiAreas","0","radius"} );	
+	std::string     radius = db.get_field( "166.111.4.100","", GeoLite2PP::VCStr {"radius"} );	
 	
 	std::cout << "半径:"<<radius << std::endl;
 
