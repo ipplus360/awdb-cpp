@@ -16,8 +16,8 @@ $ ./geolite2pp
 
 problems. if you got compile error,you need update your gcc version 1.download gcc 5.4.0
 #can't find command cmake
-# yum install cmake 
-# apt-get intall cmake 
+$ yum install cmake #or 
+$ apt-get intall cmake 
 $ wget https://ftp.gnu.org/gnu/gcc/gcc-5.4.0/gcc-5.4.0.tar.bz2 
 $ tar -jxvf gcc-5.4.0.tar.bz2 $ cd gcc-5.4.0 
 $ ./contrib/download_prerequisites 
