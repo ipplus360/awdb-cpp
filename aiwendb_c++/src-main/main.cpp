@@ -22,19 +22,28 @@ int main( int argc, char *argv[] )
 
 	
 	//print all
-	std::string json = db.lookup( "166.111.4.100" );
-	std::cout << json << std::endl;
+	
+	//如果报错就是没有查到，该IP 没有结果。
+	try{
+		std::string json = db.lookup( "166.111.4.100" );
+		std::cout << json << std::endl;
+	}catch(...){
+		std:out<<"no results!."<<endl;
+	}
 	
 	//print single field
-
+//如果报错就是没有查到，该IP 没有结果。
+	try{
 	std::string      continent= db.get_field( "166.111.4.100","", GeoLite2PP::VCStr {"continent"} );	
 	
 	std::cout << "洲:"<<continent << std::endl;
-
+	}catch(...){
+		std:out<<"no results!."<<endl;
+	}
 	std::string      areacode= db.get_field( "166.111.4.100","", GeoLite2PP::VCStr {"areacode"} );	
-	
+	//如果报错就是没有查到，该IP 没有结果。
 	std::cout << "国家编码:"<<areacode << std::endl;
-
+//如果报错就是没有查到，该IP 没有结果。
 	std::string      country= db.get_field( "166.111.4.100","", GeoLite2PP::VCStr {"country"} );	
 	
 	std::cout << "国家:"<<country << std::endl;
@@ -50,7 +59,7 @@ int main( int argc, char *argv[] )
 	std::string     accuracy = db.get_field( "166.111.4.100","", GeoLite2PP::VCStr {"accuracy"} );	
 	
 	std::cout << "定位精度:"<<accuracy << std::endl;
-
+//如果报错就是没有查到，该IP 没有结果。
 	std::string      source= db.get_field( "166.111.4.100","", GeoLite2PP::VCStr {"source"} );	
 	
 	std::cout << "定位方式:"<<source << std::endl;
@@ -77,7 +86,7 @@ int main( int argc, char *argv[] )
 	std::cout << "经度:"<<lonwgs << std::endl;
 	
 	std::string     latwgs = db.get_field( "166.111.4.100","", GeoLite2PP::VCStr {"latwgs"} );	
-	
+	//如果报错就是没有查到，该IP 没有结果。
 	std::cout << "纬度:"<<latwgs << std::endl;
 
 	std::string     radius = db.get_field( "166.111.4.100","", GeoLite2PP::VCStr {"radius"} );	
